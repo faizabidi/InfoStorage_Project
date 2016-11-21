@@ -13,8 +13,3 @@ if [ $retcode -ne 0 ]; then
 else
     echo Success.
 fi
-
-#    echo "There is no table to copy the data into. Creating a table first...."
-#    mysql -u root -p'infostorage' test_faiz -e "CREATE TABLE z_312_copy like z_312;"
-#    eval $cmd
-#fi
