@@ -26,11 +26,14 @@ rm tempfile1.txt
 sed -i 1d $filename
 
 # Add headers to the file
-sed -i.bak '1i\
+sed -i '1i\
 archivesource\ttext\tto_user_id\tfrom_user\tid\tfrom_user_id\tiso_language_code\tsource\tprofile_image_url\tgeo_type\tgeo_coordinates_0\tgeo_coordinates_1\tcreated_at\ttime' $filename
 
 # Remove non-ascii characters
 sed -i 's/[\d128-\d255]//g' $filename
+
+# Replace comma with null
+sed -i 's/,//g' $filename
 
 # Replace missing data with 0
 awk 'BEGIN { FS = OFS = "\t" } { for(i=1; i<=NF; i++) if($i ~ /^ *$/) $i = 0 }; 1' $filename > tempfile2.txt
