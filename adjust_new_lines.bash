@@ -7,9 +7,21 @@ fi
 
 filename=$1
 
-# Remove all newlines
+# Remove all newlines used in UNIX
 tr -d '\n' < $filename > newlines_removed.txt
+
+# Remove all newlines used in Windows
+tr -d '\r\n' < newlines_removed.txt > $filename
+
+# Remove all newlines used in Mac
+tr -d '\r' < $filename > newlines_removed.txt
+
+# Delete interim file, and move to the original file
 mv newlines_removed.txt $filename
+
+# Remove inverted "?". This is weird since this was supposed to go away 
+# when we removed newline characters used in Mac. But it did not.
+sed -i 's/\r//g' $filename
 
 # Insert newlines after the keyword "twitter-serach"
 CMD1="sed -r 's/twitter\-search/\\ntwitter\-search/g' $filename > tempfile1.txt"
