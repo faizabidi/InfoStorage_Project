@@ -29,9 +29,12 @@ sed -i 1d $filename
 sed -i.bak '1i\
 archivesource\ttext\tto_user_id\tfrom_user\tid\tfrom_user_id\tiso_language_code\tsource\tprofile_image_url\tgeo_type\tgeo_coordinates_0\tgeo_coordinates_1\tcreated_at\ttime' $filename
 
+# Remove non-ascii characters
+sed -i 's/[\d128-\d255]//g' $filename
+
 # Replace missing data with 0
-awk 'BEGIN { FS = OFS = "\t" } { for(i=1; i<=NF; i++) if($i ~ /^ *$/) $i = 0 }; 1' $filename > tempfile2.txt
+#awk 'BEGIN { FS = OFS = "\t" } { for(i=1; i<=NF; i++) if($i ~ /^ *$/) $i = 0 }; 1' $filename > tempfile2.txt
 
 # Move interim file to the original filename
-mv tempfile2.txt $filename
+#mv tempfile2.txt $filename
 
