@@ -33,8 +33,8 @@ archivesource\ttext\tto_user_id\tfrom_user\tid\tfrom_user_id\tiso_language_code\
 sed -i 's/[\d128-\d255]//g' $filename
 
 # Replace missing data with 0
-#awk 'BEGIN { FS = OFS = "\t" } { for(i=1; i<=NF; i++) if($i ~ /^ *$/) $i = 0 }; 1' $filename > tempfile2.txt
+awk 'BEGIN { FS = OFS = "\t" } { for(i=1; i<=NF; i++) if($i ~ /^ *$/) $i = 0 }; 1' $filename > tempfile2.txt
 
 # Move interim file to the original filename
-#mv tempfile2.txt $filename
+mv tempfile2.txt $filename
 
