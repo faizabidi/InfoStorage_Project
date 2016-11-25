@@ -43,9 +43,14 @@ sed -i 's/[\d128-\d255]//g' $filename
 # Replace comma with null
 sed -i 's/,//g' $filename
 
+# Replace double quotes with null
+sed -i 's/"//g' $filename
+
 # Replace missing data with 0
 awk 'BEGIN { FS = OFS = "\t" } { for(i=1; i<=NF; i++) if($i ~ /^ *$/) $i = 0 }; 1' $filename > tempfile2.txt
 
 # Move interim file to the original filename
 mv tempfile2.txt $filename
 
+# Add csv suffix
+mv $filename $filename.csv
