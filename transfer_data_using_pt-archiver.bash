@@ -2,6 +2,8 @@
 
 # Run pt-archiver to transfer tweets to the Archives table
 # Also output contents into a text file
+# Note that pt-archiver MOVES tweets to the Archives table.
+# That means that tweets will be deleted from the original table 
 cmd="sudo pt-archiver --source h=localhost,D=test_faiz,t=z_312 \
     -u root -p'infostorage' \
     --dest h=localhost,D=test_faiz,t=Archives \
