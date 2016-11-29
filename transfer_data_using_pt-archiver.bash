@@ -16,5 +16,5 @@ retcode=$?
 if [ $retcode -ne 0 ]; then
     echo pt-archiver process failed.
 else
-    echo Success!
+    echo Successfully transferred tweets to the ArchiveDB, and also to a text file.
 fi
