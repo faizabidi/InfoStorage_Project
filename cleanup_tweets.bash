@@ -52,5 +52,6 @@ awk 'BEGIN { FS = OFS = "\t" } { for(i=1; i<=NF; i++) if($i ~ /^ *$/) $i = 0 }; 
 # Move interim file to the original filename
 mv tempfile2.txt $filename
 
-# Add csv suffix
+# Add csv suffix since Sophie needs it for Social Network
 mv $filename $filename.csv
+
