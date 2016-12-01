@@ -7,6 +7,9 @@ fi
 
 filename=$1
 
+# Create a backup of the file
+cp $filename $filename.bak
+
 # Remove all newlines used in UNIX
 tr -d '\n' < $filename > newlines_removed.txt
 
