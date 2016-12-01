@@ -1,5 +1,5 @@
 #!/bin/bash
 
-cmd="mysql -u root -p'infostorage' --database=test_faiz"
+cmd="mysql -u root -p'infostorage' --database=infostorage"
 
 eval $cmd
